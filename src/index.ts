@@ -1,5 +1,7 @@
+#!/usr/bin/env node
+
 const fs = require("fs");
-import { GitLabEnvGenerator} from "./gitlab-env-generator";
+import { GitLabEnvGenerator } from "./gitlab-env-generator";
 
 const conf: {
     [key: string]: string | null
@@ -31,8 +33,7 @@ process.argv.forEach(pa => {
 
 Object.keys(conf).forEach(key => {
     if ( conf[key] === null) {
-        const errorText = `You must specify the ${key}`
-        throw (errorText)
+        console.log(`ERROR: You must specify the ${key}`)
     }
 })
 

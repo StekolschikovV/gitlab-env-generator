@@ -1,5 +1,6 @@
+#!/usr/bin/env node
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var fs = require("fs");
 var gitlab_env_generator_1 = require("./gitlab-env-generator");
 var conf = {
@@ -7,7 +8,7 @@ var conf = {
     file: ".env",
     token: null,
     projectName: null,
-    url: null,
+    url: null
 };
 process.argv.forEach(function (pa) {
     var paArr = pa.split("=");
@@ -28,8 +29,7 @@ process.argv.forEach(function (pa) {
 });
 Object.keys(conf).forEach(function (key) {
     if (conf[key] === null) {
-        var errorText = "You must specify the ".concat(key);
-        throw (errorText);
+        console.log("ERROR: You must specify the ".concat(key));
     }
 });
 if (conf['token'] && conf['url'] && conf['projectName'] && conf["dir"] && conf["file"]) {
